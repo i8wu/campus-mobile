@@ -1,42 +1,41 @@
 {
   "project_info": {
-    "project_number": "204227644417",
-    "firebase_url": "https://uc-san-diego-qa.firebaseio.com",
-    "project_id": "uc-san-diego-qa",
-    "storage_bucket": "uc-san-diego-qa.appspot.com"
+    "project_number": "775183675883",
+    "firebase_url": "https://uc-san-diego-mc-poc.firebaseio.com",
+    "project_id": "uc-san-diego-mc-poc",
+    "storage_bucket": "uc-san-diego-mc-poc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:204227644417:android:5fa94cd3be6fc552",
+        "mobilesdk_app_id": "1:775183675883:android:d26acca982f7473ff0e9ae",
         "android_client_info": {
-          "package_name": "edu.ucsd"
+          "package_name": "edu.ucsd.ucsandiegomychart"
         }
       },
       "oauth_client": [
         {
-          "client_id": "204227644417-oqlb6sl6pc2pdhkfr405cvab42ssa495.apps.googleusercontent.com",
+          "client_id": "775183675883-1armocst300bdkqkrq4hfg6fb4rejs1d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCYGAotK1qASH4R70ix_x0iT6_Utd707-E"
+          "current_key": "AIzaSyB8405tysvI-AMoE6HGM1V8P_nyLcZeKx4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "204227644417-oqlb6sl6pc2pdhkfr405cvab42ssa495.apps.googleusercontent.com",
+              "client_id": "775183675883-1armocst300bdkqkrq4hfg6fb4rejs1d.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "204227644417-badlapi7e50isd0bsghdtcl6k3o1d7u5.apps.googleusercontent.com",
+              "client_id": "775183675883-764ao11nrmrf3fkoik39vufduqbl4kde.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "edu.ucsd.ucsandiego",
-                "app_store_id": "318646412"
+                "bundle_id": "edu.ucsd.ucsandiegomychart"
               }
             }
           ]
