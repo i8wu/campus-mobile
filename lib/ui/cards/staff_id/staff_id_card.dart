@@ -6,6 +6,7 @@ import 'package:campus_mobile_experimental/ui/theme/darkmode_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:campus_mobile_experimental/ui/theme/app_layout.dart';
 
 class StaffIdCard extends StatefulWidget {
   StaffIdCard();
@@ -46,7 +47,9 @@ class _StaffIdCardState extends State<StaffIdCard> with WidgetsBindingObserver{
     );
   }
 
-  String fileURL = "https://cwo-test.ucsd.edu/WebCards/staff_id_new.html";
+  //String fileURL = "https://cwo-test.ucsd.edu/WebCards/staff_id_new.html";
+  String fileURL = "https://mobile.ucsd.edu/replatform/v1/qa/webview/staff_id.html";
+  double _contentHeight = cardContentMinHeight;
 
   @override
   void didChangeDependencies() {
@@ -69,26 +72,46 @@ class _StaffIdCardState extends State<StaffIdCard> with WidgetsBindingObserver{
     }
     var tokenQueryString =
         "token=" + '${_userDataProvider.authenticationModel.accessToken}';
-     url = fileURL + "?" + tokenQueryString;
-
+    url = fileURL + "?" + tokenQueryString;
+    print(url);
     reloadWebViewWithTheme(context, url, _webViewController);
 
-    return Column(
-      children: <Widget>[
-        Flexible(
-          child: WebView(
-            javascriptMode: JavascriptMode.unrestricted,
-            initialUrl: url,
-            onWebViewCreated: (controller) {
-              _webViewController = controller;
-            },
-            javascriptChannels: <JavascriptChannel>[
-              _myJavascriptChannel(context),
-            ].toSet(),
-          ),
-        ),
-      ],
+    return Container(
+      height: _contentHeight,
+      child: WebView(
+          javascriptMode: JavascriptMode.unrestricted,
+          initialUrl: url,
+          onWebViewCreated: (controller) {
+            _webViewController = controller;
+          },
+          onPageFinished: _updateContentHeight,
+          javascriptChannels: <JavascriptChannel>[
+            _myJavascriptChannel(context),
+          ].toSet(),
+      ),
     );
+  }
+
+  Future<void> _updateContentHeight(String some) async {
+    var newHeight = await _getNewContentHeight(_webViewController, _contentHeight);
+    if (_contentHeight != newHeight) {
+      setState(() {
+        _contentHeight = newHeight;
+      });
+    }
+  }
+
+  Future<double> _getNewContentHeight(WebViewController controller, double oldHeight) async {
+    double newHeight = double.parse(await controller
+        .evaluateJavascript("document.documentElement.offsetHeight"));
+    if (oldHeight != newHeight) {
+      if (newHeight < cardContentMinHeight) {
+        newHeight = cardContentMinHeight;
+      } else if (newHeight > cardContentMaxHeight) {
+        newHeight = cardContentMaxHeight;
+      }
+    }
+    return newHeight;
   }
   
   JavascriptChannel _myJavascriptChannel(BuildContext context) {
