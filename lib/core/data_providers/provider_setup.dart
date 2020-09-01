@@ -196,9 +196,10 @@ List<SingleChildWidget> dependentServices = [
       create: (_) {
     var parkingDataProvider = ParkingDataProvider();
     parkingDataProvider.fetchParkingLots();
+    parkingDataProvider.fetchSpotTypes();
     return parkingDataProvider;
   }, update: (_, userDataProvider, parkingDataProvider) {
-    parkingDataProvider.userDataProvider = userDataProvider;
+    //   parkingDataProvider.userDataProvider = userDataProvider;
     return parkingDataProvider;
   }),
   ChangeNotifierProxyProvider<UserDataProvider, StudentIdDataProvider>(

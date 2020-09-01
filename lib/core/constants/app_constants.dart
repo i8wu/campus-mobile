@@ -33,6 +33,9 @@ class RoutePaths {
   static const String SpecialEventsDetailView =
       'special_events/special_events_detail_view';
   static const String ScannerView = 'scanner/scanner_view';
+  static const String Parking = "parking/parking_view";
+  static const String SpotTypesView = "parking/spot_types_view";
+  static const String ParkingLotsView = "parking/parking_lots_view";
 }
 
 class RouteTitles {
@@ -105,5 +108,6 @@ class CardTitleConstants {
     'events': 'Events',
     'news': 'News',
     'weather': 'Weather',
+    'parking': 'Parking',
   };
 }
